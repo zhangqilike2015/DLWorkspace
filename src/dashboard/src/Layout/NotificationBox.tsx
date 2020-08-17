@@ -3,17 +3,9 @@ import {
   Fragment,
   FunctionComponent,
   useContext,
-<<<<<<< HEAD
-  useMemo,
-} from 'react';
-
-import { get } from 'lodash';
-
-=======
   useMemo
 } from 'react'
 import useFetch from 'use-http-1'
->>>>>>> 09d82aa5... Add cluster notification (#1291)
 import {
   Box,
   BoxProps,
@@ -21,20 +13,10 @@ import {
   Paper,
   Typography,
   createStyles,
-<<<<<<< HEAD
-  makeStyles,
-} from '@material-ui/core';
-
-import { Info } from '@material-ui/icons';
-
-import ConfigContext from '../contexts/Config';
-import TeamContext from '../contexts/Team';
-=======
   makeStyles
 } from '@material-ui/core'
 import { Info } from '@material-ui/icons'
 import ClustersContext from '../contexts/Clusters'
->>>>>>> 09d82aa5... Add cluster notification (#1291)
 
 const usePaperStyle = makeStyles(theme => createStyles({
   root: {
@@ -44,24 +26,6 @@ const usePaperStyle = makeStyles(theme => createStyles({
   },
 }));
 
-<<<<<<< HEAD
-const NotificationBox: FunctionComponent<BoxProps> = (props) => {
-  const { notifications } = useContext(ConfigContext);
-  const { currentTeamId } = useContext(TeamContext);
-
-  const notification = useMemo(() => {
-    const notification = get(notifications, [currentTeamId]);
-    if (notification === undefined) {
-      return get(notifications, ['.default']);
-    }
-    return notification
-  }, [notifications, currentTeamId]);
-
-  const paperStyle = usePaperStyle();
-
-  if (Boolean(notification) === false) return null;
-
-=======
 const ClusterNotifications: FunctionComponent<{ cluster: any }> = ({ cluster }) => {
   const { data } = useFetch(`/api/clusters/${cluster.id}`, [cluster.id])
   const notifications = useMemo(() => {
@@ -95,7 +59,6 @@ const ClusterNotifications: FunctionComponent<{ cluster: any }> = ({ cluster }) 
 
 const NotificationBox: FunctionComponent<BoxProps> = (props) => {
   const { clusters } = useContext(ClustersContext)
->>>>>>> 09d82aa5... Add cluster notification (#1291)
   return (
     <Box {...props}>
       {clusters.map(cluster => (

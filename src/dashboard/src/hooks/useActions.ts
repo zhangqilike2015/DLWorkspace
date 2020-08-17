@@ -46,11 +46,7 @@ const useActions = (clusterId: string) => {
   }, [clusterId]);
 
   const onSupport = useCallback((event: any, job: any) => {
-<<<<<<< HEAD
-    const subject = `[DLTS Job][${clusterId}][${job['vcName']}]: <Issue Title by User>`;
-=======
     const subject = `[DLTS Job][${clusterId}][${job['vcName']}][${job['jobId']}]: <Issue Title by User>`
->>>>>>> acee4c15... email template add job id (#1290)
     const body = `
 Hi DLTS support team,
 
